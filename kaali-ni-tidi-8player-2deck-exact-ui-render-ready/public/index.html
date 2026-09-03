@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071e17" />
+  <title>Kaali Ni Tidi — 3 of Spades</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="brand-lockup"><span class="brand-mark">3♠</span><div><div class="eyebrow">3 OF SPADES</div><div class="brand-sub">KAALI NI TIDI</div></div></div>
+        <h1 data-i18n="title">Kaali Ni Tidi</h1>
+        <p data-i18n="subtitle">Online multiplayer card table</p>
+      </div>
+      <div class="top-actions">
+        <button id="langBtn" class="icon-btn" type="button" aria-label="Toggle language">ગુજરાતી</button>
+        <button id="soundBtn" class="icon-btn" type="button" aria-label="Toggle sound">🔊</button>
+        <div id="roomBadge" class="room-badge hidden"></div>
+      </div>
+    </header>
+
+    <section id="profilePanel" class="panel profile-panel">
+      <div>
+        <div class="eyebrow" data-i18n="profile">PLAYER PROFILE</div>
+        <h2 data-i18n="quickLogin">Quick login</h2>
+        <p class="muted" data-i18n="profileHelp">Your name and avatar are saved on this browser.</p>
+      </div>
+      <div class="profile-controls">
+        <label><span data-i18n="yourName">Your name</span>
+          <input id="profileName" maxlength="18" placeholder="Tushar" />
+        </label>
+        <div>
+          <span class="label-text" data-i18n="avatar">Avatar</span>
+          <div id="avatarPicker" class="avatar-picker"></div>
+        </div>
+        <button id="saveProfileBtn" class="primary" type="button" data-i18n="saveProfile">Save profile</button>
+      </div>
+    </section>
+
+    <section id="homeScreen" class="panel home-grid">
+      <div class="hero">
+        <div class="big-spade">♠</div>
+        <h2 data-i18n="heroTitle">Play Kaali Ni Tidi with your friends.</h2>
+        <p data-i18n="heroText">Create a private room, share the code, and play with 4, 6, or 8 players. 8-player mode uses two full decks (104 cards). Empty seats can be filled by bots.</p>
+        <div class="rule-chips">
+          <span>3♠ = 30 + highest</span>
+          <span>A/K/Q/J/10 = 10</span>
+          <span>5 = 5</span>
+        </div>
+      </div>
+
+      <form id="createForm" class="form-card">
+        <h3 data-i18n="createRoom">Create room</h3>
+        <label><span data-i18n="players">Players</span>
+          <select id="playerCount">
+            <option value="4">4 players</option>
+            <option value="6">6 players</option>
+            <option value="8">8 players</option>
+          </select>
+        </label>
+        <button class="primary" type="submit" data-i18n="createPrivate">Create private room</button>
+        <p class="hint" data-i18n="botsHelp">Empty seats become bots when the host starts.</p>
+      </form>
+
+      <form id="joinForm" class="form-card">
+        <h3 data-i18n="joinRoom">Join room</h3>
+        <label><span data-i18n="roomCode">Room code</span>
+          <input id="joinCode" maxlength="5" placeholder="ABCDE" autocomplete="off" required />
+        </label>
+        <button type="submit" data-i18n="join">Join room</button>
+      </form>
+    </section>
+
+    <section id="gameScreen" class="hidden">
+      <div class="status-row">
+        <div>
+          <span id="phaseText" class="phase-pill">Lobby</span>
+          <strong id="turnText"></strong>
+        </div>
+        <div class="voice-toolbar">
+          <span id="voiceStatus" class="voice-status">Voice off</span>
+          <button id="joinVoiceBtn" class="small-btn voice-primary" type="button">🎙 Join Voice</button>
+          <button id="muteVoiceBtn" class="small-btn hidden" type="button">🔇 Mute</button>
+          <button id="leaveVoiceBtn" class="small-btn hidden" type="button">Leave</button>
+          <button id="copyCodeBtn" class="small-btn" type="button" data-i18n="copyCode">Copy room code</button>
+        </div>
+      </div>
+
+      <section id="lobbyPanel" class="panel">
+        <div class="section-title">
+          <div>
+            <h2 data-i18n="players">Players</h2>
+            <p id="lobbyHelp"></p>
+          </div>
+          <button id="startBtn" class="primary hidden" type="button" data-i18n="startGame">Start game</button>
+        </div>
+        <div id="lobbyPlayers" class="player-grid"></div>
+      </section>
+
+      <section id="tablePanel" class="table-wrap hidden">
+        <div class="score-strip">
+          <div><span data-i18n="round">Round</span><strong id="roundNo">1</strong></div>
+          <div><span data-i18n="bid">Bid</span><strong id="currentBid">—</strong></div>
+          <div><span data-i18n="hukum">Hukum</span><strong id="trumpText">—</strong></div>
+          <div><span data-i18n="trick">Trick</span><strong id="trickNo">0</strong></div>
+        </div>
+
+        <div class="table">
+          <div id="seatRing" class="seat-ring"></div>
+          <div class="center-zone">
+            <div id="trickArea" class="trick-area"></div>
+            <div id="centerMessage" class="center-message">Waiting…</div>
+          </div>
+        </div>
+
+        <section id="actionPanel" class="panel action-panel"></section>
+
+        <section class="hand-panel">
+          <div class="hand-heading">
+            <div>
+              <span data-i18n="yourHand">Your hand</span>
+              <strong id="handCount">0 cards</strong>
+            </div>
+            <div id="legalHint" class="legal-hint"></div>
+          </div>
+          <div id="hand" class="hand"></div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="panel">
+            <h3 data-i18n="scoreboard">Scoreboard</h3>
+            <div id="scoreboard"></div>
+          </div>
+
+          <div class="panel chat-panel">
+            <div class="section-title compact">
+              <h3 data-i18n="chat">Table chat</h3>
+              <div id="emojiBar" class="emoji-bar"></div>
+            </div>
+            <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+            <form id="chatForm" class="chat-form">
+              <input id="chatInput" maxlength="180" placeholder="Message…" autocomplete="off" />
+              <button type="submit" data-i18n="send">Send</button>
+            </form>
+          </div>
+
+          <div class="panel log-panel">
+            <h3 data-i18n="gameLog">Game log</h3>
+            <div id="gameLog" class="game-log"></div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <div id="voiceAudioContainer" class="voice-audio-container" aria-hidden="true"></div>
+    <div id="toast" class="toast hidden" role="status"></div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
