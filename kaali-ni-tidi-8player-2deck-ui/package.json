@@ -1,0 +1,30 @@
+{
+  "name": "kaali-ni-tidi-8player-2deck-ui",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Kaali Ni Tidi multiplayer using the supplied 3 of Spades UI, with 4/6/8-player rooms, 2 decks for 8 players, voice chat, bots, chat and Capacitor mobile wrappers.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "cap:android:add": "npx cap add android",
+    "cap:android:sync": "npx cap sync android",
+    "android": "npx cap open android",
+    "cap:ios:add": "npx cap add ios",
+    "cap:ios:sync": "npx cap sync ios",
+    "ios": "npx cap open ios"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/ios": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0"
+  }
+}
