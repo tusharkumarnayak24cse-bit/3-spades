@@ -1,0 +1,12 @@
+{
+  "name": "taash-royale",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Teen Patti and Kali Ni Teedi browser game",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
