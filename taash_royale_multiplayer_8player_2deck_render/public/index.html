@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06120d">
+<title>Taash Royale Multiplayer</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="logo.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div class="grain"></div>
+  <header>
+    <button class="roundBtn" id="homeBtn">⌂</button>
+    <div class="brand"><span>♠</span><b>TAASH ROYALE</b><small>MULTIPLAYER</small></div>
+    <div class="headRight">
+      <button class="roundBtn" id="micBtn" title="Voice chat">🎙️</button>
+      <button class="roundBtn" id="helpBtn">?</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="landing" class="screen active">
+      <div class="hero">
+        <div class="kicker">INDIAN CARD TABLE • ONLINE</div>
+        <h1>TAASH <i>ROYALE</i></h1>
+        <p>Create a private room, share the code, and play with friends from their phones.</p>
+        <div class="nameRow">
+          <input id="nameInput" maxlength="18" placeholder="Your name" value="">
+        </div>
+
+        <div class="games">
+          <button class="gameCard selected" data-game="teen">
+            <div class="art fan"><span>A♠</span><span class="red">K♥</span><span>Q♣</span></div>
+            <small>2–4 PLAYERS</small><strong>Teen Patti</strong>
+            <p>Blind, seen, chaal, raise, fold and show.</p>
+          </button>
+          <button class="gameCard" data-game="kali">
+            <div class="art three">3<span>♠</span></div>
+            <small>4–8 PLAYERS • UP TO 2 DECKS</small><strong>Kali Ni Teedi</strong>
+            <p>4 players use 1 deck. 5–8 players use 2 decks; at 8 players all 104 cards are dealt.</p>
+          </button>
+        </div>
+
+        <div class="joinBox">
+          <button class="goldBtn" id="createBtn">CREATE PRIVATE ROOM</button>
+          <div class="or"><span></span>OR<span></span></div>
+          <div class="joinLine">
+            <input id="codeInput" maxlength="5" placeholder="ROOM CODE">
+            <button class="darkBtn" id="joinBtn">JOIN ROOM</button>
+          </div>
+        </div>
+        <div class="safe">Virtual chips only • No real-money wagering</div>
+      </div>
+    </section>
+
+    <section id="lobby" class="screen">
+      <div class="lobbyShell">
+        <div class="roomTop">
+          <div>
+            <small>PRIVATE ROOM</small>
+            <div class="roomCode"><span id="roomCode">ABCDE</span><button id="copyBtn">COPY</button></div>
+          </div>
+          <div class="gameSwitch">
+            <button data-game="teen">Teen Patti</button>
+            <button data-game="kali">Kali Ni Teedi</button>
+          </div>
+        </div>
+        <div id="playersGrid" class="playersGrid"></div>
+        <div class="voiceNote"><span>🎙️</span><div><b>Voice chat ready</b><small>Tap the microphone in the top-right to talk.</small></div></div>
+        <button id="startBtn" class="goldBtn wide">START GAME</button>
+        <p id="lobbyHint" class="lobbyHint"></p>
+      </div>
+    </section>
+
+    <section id="game" class="screen">
+      <div class="tableWrap">
+        <div id="table" class="table">
+          <div class="tableLogo">♠<small>TAASH ROYALE</small></div>
+          <div id="status" class="status">READY</div>
+
+          <div id="seats" class="seatsLayer"></div>
+
+          <div id="center" class="center"></div>
+          <div id="hand" class="hand"></div>
+        </div>
+      </div>
+      <div id="controls" class="controls"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <div id="modal" class="modal">
+    <div class="modalCard">
+      <button class="x" id="closeModal">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <div id="remoteAudio"></div>
+</div>
+<script src="client.js"></script>
+</body>
+</html>

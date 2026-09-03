@@ -1,0 +1,16 @@
+{
+  "name": "Taash Royale Multiplayer",
+  "short_name": "Taash Royale",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#030a07",
+  "theme_color": "#06120d",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

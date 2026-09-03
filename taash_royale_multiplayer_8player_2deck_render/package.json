@@ -1,0 +1,16 @@
+{
+  "name": "taash-royale-multiplayer",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Multiplayer Teen Patti and 4\u20138 player Kali Ni Teedi with up to two decks and WebRTC voice chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
