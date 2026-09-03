@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: taash-royale
-    runtime: node
-    plan: free
-    buildCommand: ""
-    startCommand: npm start
