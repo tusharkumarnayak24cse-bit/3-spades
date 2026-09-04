@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: kaali-ni-tidi-v9
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TURN_TIMEOUT_MS
+        value: 60000
